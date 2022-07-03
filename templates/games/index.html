@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='Rated.css') }}" media="screen">
+{% endblock %}
+{% block body %}
+<section class="u-align-center u-clearfix u-gradient u-section-1" id="sec-28dc">
+  <div class="u-clearfix u-sheet u-sheet-1">
+    <div class="u-clearfix u-expanded-width u-gutter-0 u-layout-wrap u-layout-wrap-1">
+      <div class="u-layout" style="">
+          {% for game in games %}
+          <div class="u-layout-row" style="">
+              <div class="u-align-left u-container-style u-image u-layout-cell u-left-cell u-shading u-size-22 u-size-xs-60 u-image-1" src='' data-image-width="1080" data-image-height="1080">
+                  <div class="u-border-2 u-border-white u-container-layout u-valign-middle u-container-layout-1" src="">
+                      <img src={{game.imageURL}}/>
+                  </div>
+              </div>
+              <div class="u-align-left u-black u-container-style u-layout-cell u-right-cell u-size-38 u-size-xs-60 u-layout-cell-2">
+                  <div class="u-border-2 u-border-grey-15 u-container-layout u-valign-middle u-container-layout-2">
+                      <h2 class="u-text u-text-default u-text-1">{{game.title}}</h2>
+                      <p class="u-text u-text-2">{{game.brand}}  {{game.asin}}</p>
+                      <a href="{{url_for('games.game', asin = game.asin)}}" class="u-border-2 u-border-white u-btn u-btn-rectangle u-button-style u-none u-btn-1">learn more</a>
+                  </div>
+              </div>
+          </div>
+          {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
